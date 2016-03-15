@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AWS_Restarter.Utilities;
 
 namespace AWS_Restarter
 {
@@ -63,7 +64,7 @@ namespace AWS_Restarter
         private void WriteOrganizationName(string organizationName)
         {
             string configPath = String.Format("{0}\\{1}", AmazonLocalAppDataPath(), this.configFilename);
-            string content = String.Format("{{ \"organizationName\":\"{0}\", \"endpointcode\":\"{1}\" }}", organizationName, "prod.pdx");
+            string content = String.Format("{{ \"organizationName\":\"{0}\", \"endpointcode\":\"{1}\" }}", organizationName, Settings.Get("ENDPOINT"));
             File.WriteAllText(configPath, content);
         }
 
